@@ -1,0 +1,1266 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Utility">
+      
+      
+      
+        <meta name="author" content="Amazon Web Services">
+      
+      
+      <link rel="shortcut icon" href="../../media/aws-logo-light.svg">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+    
+    
+      
+        <title>Parameters - Lambda Powertools Java</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1655a90d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#7e56c2">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-purple" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#install" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Lambda Powertools Java" class="md-header__button md-logo" aria-label="Lambda Powertools Java">
+      
+  <img src="../../media/aws-logo-light.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Lambda Powertools Java
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Parameters
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/awslabs/aws-lambda-powertools-java/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Lambda Powertools Java" class="md-nav__button md-logo" aria-label="Lambda Powertools Java">
+      
+  <img src="../../media/aws-logo-light.svg" alt="logo">
+
+    </a>
+    Lambda Powertools Java
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/awslabs/aws-lambda-powertools-java/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Homepage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Core utilities
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Core utilities" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Core utilities
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../core/logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../core/tracing/" class="md-nav__link">
+        Tracing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../core/metrics/" class="md-nav__link">
+        Metrics
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Utilities
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Utilities" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Utilities
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Parameters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Parameters
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install" class="md-nav__link">
+    Install
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssm-parameter-store" class="md-nav__link">
+    SSM Parameter Store
+  </a>
+  
+    <nav class="md-nav" aria-label="SSM Parameter Store">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-arguments" class="md-nav__link">
+    Additional arguments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secrets-manager" class="md-nav__link">
+    Secrets Manager
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-configuration" class="md-nav__link">
+    Advanced configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    Caching
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transform-values" class="md-nav__link">
+    Transform values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluent-api" class="md-nav__link">
+    Fluent API
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-your-own-provider" class="md-nav__link">
+    Create your own provider
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotation" class="md-nav__link">
+    Annotation
+  </a>
+  
+    <nav class="md-nav" aria-label="Annotation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install_1" class="md-nav__link">
+    Install
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sqs_large_message_handling/" class="md-nav__link">
+        SQS Large Message Handling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../batch/" class="md-nav__link">
+        SQS Batch Processing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install" class="md-nav__link">
+    Install
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssm-parameter-store" class="md-nav__link">
+    SSM Parameter Store
+  </a>
+  
+    <nav class="md-nav" aria-label="SSM Parameter Store">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-arguments" class="md-nav__link">
+    Additional arguments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secrets-manager" class="md-nav__link">
+    Secrets Manager
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-configuration" class="md-nav__link">
+    Advanced configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    Caching
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transform-values" class="md-nav__link">
+    Transform values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluent-api" class="md-nav__link">
+    Fluent API
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-your-own-provider" class="md-nav__link">
+    Create your own provider
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotation" class="md-nav__link">
+    Annotation
+  </a>
+  
+    <nav class="md-nav" aria-label="Annotation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install_1" class="md-nav__link">
+    Install
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/awslabs/aws-lambda-powertools-java/edit/develop/docs/utilities/parameters.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>Parameters</h1>
+                
+                <p>The parameters utility provides a way to retrieve parameter values from
+<a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html">AWS Systems Manager Parameter Store</a> or
+<a href="https://aws.amazon.com/secrets-manager/">AWS Secrets Manager</a>. It also provides a base class to create your parameter provider implementation.</p>
+<p><strong>Key features</strong></p>
+<ul>
+<li>Retrieve one or multiple parameters from the underlying provider</li>
+<li>Cache parameter values for a given amount of time (defaults to 5 seconds)</li>
+<li>Transform parameter values from JSON or base 64 encoded strings</li>
+</ul>
+<h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
+<p>To install this utility, add the following dependency to your project.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>software.amazon.lambda<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>powertools-parameters<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.2.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+</td></tr></table>
+<p><strong>IAM Permissions</strong></p>
+<p>This utility requires additional permissions to work as expected. See the table below:</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Function/Method</th>
+<th>IAM Permission</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSM Parameter Store</td>
+<td><code>SSMProvider.get(String)</code> <code>SSMProvider.get(String, Class)</code></td>
+<td><code>ssm:GetParameter</code></td>
+</tr>
+<tr>
+<td>SSM Parameter Store</td>
+<td><code>SSMProvider.getMultiple(String)</code></td>
+<td><code>ssm:GetParametersByPath</code></td>
+</tr>
+<tr>
+<td>Secrets Manager</td>
+<td><code>SecretsProvider.get(String)</code> <code>SecretsProvider.get(String, Class)</code></td>
+<td><code>secretsmanager:GetSecretValue</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ssm-parameter-store">SSM Parameter Store<a class="headerlink" href="#ssm-parameter-store" title="Permanent link">&para;</a></h2>
+<p>You can retrieve a single parameter using SSMProvider.get() and pass the key of the parameter.
+For multiple parameters, you can use SSMProvider.getMultiple() and pass the path to retrieve them all.</p>
+<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">AppWithSSM.java</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppWithSSM</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="c1">// Get an instance of the SSM Provider</span>
+    <span class="n">SSMProvider</span> <span class="n">ssmProvider</span> <span class="o">=</span> <span class="n">ParamManager</span><span class="p">.</span><span class="na">getSsmProvider</span><span class="p">();</span>
+
+    <span class="c1">// Retrieve a single parameter</span>
+    <span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="n">ssmProvider</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;/my/parameter&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Retrieve multiple parameters from a path prefix</span>
+    <span class="c1">// This returns a Map with the parameter name as key</span>
+    <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">values</span> <span class="o">=</span> <span class="n">ssmProvider</span><span class="p">.</span><span class="na">getMultiple</span><span class="p">(</span><span class="s">&quot;/my/path/prefix&quot;</span><span class="p">);</span>
+
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<p>Alternatively, you can retrieve an instance of a provider and configure its underlying SDK client,
+in order to get data from other regions or use specific credentials:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  <span class="n">SsmClient</span> <span class="n">client</span> <span class="o">=</span> <span class="n">SsmClient</span><span class="p">.</span><span class="na">builder</span><span class="p">().</span><span class="na">region</span><span class="p">(</span><span class="n">Region</span><span class="p">.</span><span class="na">EU_CENTRAL_1</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
+  <span class="n">SSMProvider</span> <span class="n">ssmProvider</span> <span class="o">=</span> <span class="n">ParamManager</span><span class="p">.</span><span class="na">getSsmProvider</span><span class="p">(</span><span class="n">client</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="additional-arguments">Additional arguments<a class="headerlink" href="#additional-arguments" title="Permanent link">&para;</a></h3>
+<p>The AWS Systems Manager Parameter Store provider supports two additional arguments for the <code>get()</code> and <code>getMultiple()</code> methods:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>withDecryption()</strong></td>
+<td><code>False</code></td>
+<td>Will automatically decrypt the parameter.</td>
+</tr>
+<tr>
+<td><strong>recursive()</strong></td>
+<td><code>False</code></td>
+<td>For <code>getMultiple()</code> only, will fetch all parameter values recursively based on a path prefix.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example:</strong></p>
+<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">AppWithSSM.java</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppWithSSM</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="c1">// Get an instance of the SSM Provider</span>
+    <span class="n">SSMProvider</span> <span class="n">ssmProvider</span> <span class="o">=</span> <span class="n">ParamManager</span><span class="p">.</span><span class="na">getSsmProvider</span><span class="p">();</span>
+
+    <span class="c1">// Retrieve a single parameter and decrypt it</span>
+<span class="hll">    <span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="n">ssmProvider</span><span class="p">.</span><span class="na">withDecryption</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;/my/parameter&quot;</span><span class="p">);</span>
+</span>
+    <span class="c1">// Retrieve multiple parameters recursively from a path prefix</span>
+<span class="hll">    <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">values</span> <span class="o">=</span> <span class="n">ssmProvider</span><span class="p">.</span><span class="na">recursive</span><span class="p">().</span><span class="na">getMultiple</span><span class="p">(</span><span class="s">&quot;/my/path/prefix&quot;</span><span class="p">);</span>
+</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h2 id="secrets-manager">Secrets Manager<a class="headerlink" href="#secrets-manager" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">AppWithSecrets.java</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppWithSecrets</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="c1">// Get an instance of the Secrets Provider</span>
+    <span class="n">SecretsProvider</span> <span class="n">secretsProvider</span> <span class="o">=</span> <span class="n">ParamManager</span><span class="p">.</span><span class="na">getSecretsProvider</span><span class="p">();</span>
+
+    <span class="c1">// Retrieve a single secret</span>
+<span class="hll">    <span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="n">secretsProvider</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;/my/secret&quot;</span><span class="p">);</span>
+</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<p>Alternatively, you can retrieve an instance of a provider and configure its underlying SDK client,
+in order to get data from other regions or use specific credentials:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  <span class="n">SecretsManagerClient</span> <span class="n">client</span> <span class="o">=</span> <span class="n">SecretsManagerClient</span><span class="p">.</span><span class="na">builder</span><span class="p">().</span><span class="na">region</span><span class="p">(</span><span class="n">Region</span><span class="p">.</span><span class="na">EU_CENTRAL_1</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
+  <span class="n">SecretsProvider</span> <span class="n">secretsProvider</span> <span class="o">=</span> <span class="n">ParamManager</span><span class="p">.</span><span class="na">getSecretsProvider</span><span class="p">(</span><span class="n">client</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<h2 id="advanced-configuration">Advanced configuration<a class="headerlink" href="#advanced-configuration" title="Permanent link">&para;</a></h2>
+<h3 id="caching">Caching<a class="headerlink" href="#caching" title="Permanent link">&para;</a></h3>
+<p>By default, all parameters and their corresponding values are cached for 5 seconds.</p>
+<p>You can customize this default value using:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  <span class="n">provider</span><span class="p">.</span><span class="na">defaultMaxAge</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="n">ChronoUnit</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>You can also customize this value for each parameter with:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  <span class="n">provider</span><span class="p">.</span><span class="na">withMaxAge</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="n">ChronoUnit</span><span class="p">).</span><span class="na">get</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table></p>
+<h3 id="transform-values">Transform values<a class="headerlink" href="#transform-values" title="Permanent link">&para;</a></h3>
+<p>Parameter values can be transformed using <code>withTransformation(transformerClass)</code>.
+Base64 and JSON transformations are provided:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>   <span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="n">provider</span>
+                    <span class="p">.</span><span class="na">withTransformation</span><span class="p">(</span><span class="n">Transformer</span><span class="p">.</span><span class="na">base64</span><span class="p">)</span>
+                    <span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;/my/parameter/b64&quot;</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<p>For more complex transformation, you need to specify how to deserialize:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>   <span class="n">MyObj</span> <span class="n">object</span> <span class="o">=</span> <span class="n">provider</span>
+                    <span class="p">.</span><span class="na">withTransformation</span><span class="p">(</span><span class="n">Transformer</span><span class="p">.</span><span class="na">json</span><span class="p">)</span>
+                    <span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;/my/parameter/json&quot;</span><span class="p">,</span> <span class="n">MyObj</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<p><strong>Note</strong>: <code>SSMProvider.getMultiple()</code> does not support transformation and will return simple Strings.</p>
+<p><strong>Write your own Transformer</strong></p>
+<p>You can write your own transformer, by implementing the <code>Transformer</code> interface and the <code>applyTransformation()</code> method.
+For example, if you wish to deserialize XML into an object:</p>
+<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">XmlTransformer.java</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">XmlTransformer</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">Transformer</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
+</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">XmlMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">XmlMapper</span><span class="p">();</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">T</span> <span class="nf">applyTransformation</span><span class="p">(</span><span class="n">String</span> <span class="n">value</span><span class="p">,</span> <span class="n">Class</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">targetClass</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">TransformationException</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">mapper</span><span class="p">.</span><span class="na">readValue</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">targetClass</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">TransformationException</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<p>Then use it like this:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="n">MyObj</span> <span class="n">object</span> <span class="o">=</span> <span class="n">provider</span>
+                        <span class="p">.</span><span class="na">withTransformation</span><span class="p">(</span><span class="n">XmlTransformer</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+                        <span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;/my/parameter/xml&quot;</span><span class="p">,</span> <span class="n">MyObj</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="fluent-api">Fluent API<a class="headerlink" href="#fluent-api" title="Permanent link">&para;</a></h3>
+<p>To simplify the use of the library, you can chain all method calls before a get.</p>
+<p><strong>Example:</strong></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="n">ssmProvider</span>
+      <span class="p">.</span><span class="na">defaultMaxAge</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">SECONDS</span><span class="p">)</span>     <span class="c1">// will set 10 seconds as the default cache TTL</span>
+      <span class="p">.</span><span class="na">withMaxAge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">MINUTES</span><span class="p">)</span>         <span class="c1">// will set the cache TTL for this value at 1 minute</span>
+      <span class="p">.</span><span class="na">withTransformation</span><span class="p">(</span><span class="n">json</span><span class="p">)</span>       <span class="c1">// json is a static import from Transformer.json</span>
+      <span class="p">.</span><span class="na">withDecryption</span><span class="p">()</span>               <span class="c1">// enable decryption of the parameter value</span>
+      <span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;/my/param&quot;</span><span class="p">,</span> <span class="n">MyObj</span><span class="p">.</span><span class="na">class</span><span class="p">);</span> <span class="c1">// finally get the value</span>
+</code></pre></div>
+</td></tr></table>
+<h2 id="create-your-own-provider">Create your own provider<a class="headerlink" href="#create-your-own-provider" title="Permanent link">&para;</a></h2>
+<p>You can create your own custom parameter store provider by inheriting the <code>BaseProvider</code> class and implementing the
+<code>String getValue(String key)</code> method to retrieve data from your underlying store.</p>
+<p>All transformation and caching logic is handled by the get() methods in the base class.</p>
+<p>Here is an example implementation using S3 as a custom parameter store:</p>
+<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">S3Provider.java</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">S3Provider</span> <span class="kd">extends</span> <span class="n">BaseProvider</span> <span class="p">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">S3Client</span> <span class="n">client</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">bucket</span><span class="p">;</span>
+
+    <span class="n">S3Provider</span><span class="p">(</span><span class="n">CacheManager</span> <span class="n">cacheManager</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">(</span><span class="n">cacheManager</span><span class="p">,</span> <span class="n">S3Client</span><span class="p">.</span><span class="na">create</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="n">S3Provider</span><span class="p">(</span><span class="n">CacheManager</span> <span class="n">cacheManager</span><span class="p">,</span> <span class="n">S3Client</span> <span class="n">client</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">(</span><span class="n">cacheManager</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">client</span> <span class="o">=</span> <span class="n">client</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">S3Provider</span> <span class="nf">withBucket</span><span class="p">(</span><span class="n">String</span> <span class="n">bucket</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">bucket</span> <span class="o">=</span> <span class="n">bucket</span><span class="p">;</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="n">String</span> <span class="nf">getValue</span><span class="p">(</span><span class="n">String</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">bucket</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalStateException</span><span class="p">(</span><span class="s">&quot;A bucket must be specified, using withBucket() method&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">GetObjectRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="n">GetObjectRequest</span><span class="p">.</span><span class="na">builder</span><span class="p">().</span><span class="na">bucket</span><span class="p">(</span><span class="n">bucket</span><span class="p">).</span><span class="na">key</span><span class="p">(</span><span class="n">key</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
+        <span class="n">ResponseBytes</span><span class="o">&lt;</span><span class="n">GetObjectResponse</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="na">getObject</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">ResponseTransformer</span><span class="p">.</span><span class="na">toBytes</span><span class="p">());</span>
+        <span class="k">return</span> <span class="n">response</span><span class="p">.</span><span class="na">asUtf8String</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="nf">getMultipleValues</span><span class="p">(</span><span class="n">String</span> <span class="n">path</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">bucket</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalStateException</span><span class="p">(</span><span class="s">&quot;A bucket must be specified, using withBucket() method&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">ListObjectsV2Request</span> <span class="n">listRequest</span> <span class="o">=</span> <span class="n">ListObjectsV2Request</span><span class="p">.</span><span class="na">builder</span><span class="p">().</span><span class="na">bucket</span><span class="p">(</span><span class="n">bucket</span><span class="p">).</span><span class="na">prefix</span><span class="p">(</span><span class="n">path</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">S3Object</span><span class="o">&gt;</span> <span class="n">s3Objects</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="na">listObjectsV2</span><span class="p">(</span><span class="n">listRequest</span><span class="p">).</span><span class="na">contents</span><span class="p">();</span>
+
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+        <span class="n">s3Objects</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">s3Object</span> <span class="o">-&gt;</span> <span class="p">{</span>
+            <span class="n">result</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">s3Object</span><span class="p">.</span><span class="na">key</span><span class="p">(),</span> <span class="n">getValue</span><span class="p">(</span><span class="n">s3Object</span><span class="p">.</span><span class="na">key</span><span class="p">()));</span>
+        <span class="p">});</span>
+
+        <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">resetToDefaults</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">.</span><span class="na">resetToDefaults</span><span class="p">();</span>
+        <span class="n">bucket</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<p>And then use it like this :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="n">S3Provider</span> <span class="n">provider</span> <span class="o">=</span> <span class="k">new</span> <span class="n">S3Provider</span><span class="p">(</span><span class="n">ParamManager</span><span class="p">.</span><span class="na">getCacheManager</span><span class="p">());</span>
+    <span class="n">provider</span><span class="p">.</span><span class="na">setTransformationManager</span><span class="p">(</span><span class="n">ParamManager</span><span class="p">.</span><span class="na">getTransformationManager</span><span class="p">());</span> <span class="c1">// optional, needed for transformations</span>
+    <span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="n">provider</span><span class="p">.</span><span class="na">withBucket</span><span class="p">(</span><span class="s">&quot;myBucket&quot;</span><span class="p">).</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;myKey&quot;</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<h2 id="annotation">Annotation<a class="headerlink" href="#annotation" title="Permanent link">&para;</a></h2>
+<p>You can make use of the annotation <code>@Param</code> to inject a parameter value in a variable.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="nd">@Param</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="s">&quot;/my/parameter&quot;</span><span class="p">)</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">value</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
+<p>By default it will use <code>SSMProvider</code> to retrieve the value from AWS System Manager Parameter Store.
+You could specify a different provider as long as it extends <code>BaseProvider</code> and/or a <code>Transformer</code>.
+For example:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="nd">@Param</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="s">&quot;/my/parameter/json&quot;</span><span class="p">,</span> <span class="n">provider</span> <span class="o">=</span> <span class="n">SecretsProvider</span><span class="p">.</span><span class="na">class</span><span class="p">,</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">JsonTransformer</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+    <span class="kd">private</span> <span class="n">ObjectToDeserialize</span> <span class="n">value</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
+<p>In this case <code>SecretsProvider</code> will be used to retrieve a raw value that is then trasformed into the target Object by using <code>JsonTransformer</code>.
+To show the convenience of the annotation compare the following two code snippets.</p>
+<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">AppWithoutAnnotation.java</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppWithoutAnnotation</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
+
+    <span class="c1">// Get an instance of the SSM Provider</span>
+<span class="hll">    <span class="n">SSMProvider</span> <span class="n">ssmProvider</span> <span class="o">=</span> <span class="n">ParamManager</span><span class="p">.</span><span class="na">getSsmProvider</span><span class="p">();</span>
+</span>
+    <span class="c1">// Retrieve a single parameter</span>
+<span class="hll">    <span class="n">ObjectToDeserialize</span> <span class="n">value</span> <span class="o">=</span> <span class="n">ssmProvider</span>
+</span><span class="hll">                                    <span class="p">.</span><span class="na">withTransformation</span><span class="p">(</span><span class="n">Transformer</span><span class="p">.</span><span class="na">json</span><span class="p">)</span>
+</span><span class="hll">                                    <span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;/my/parameter/json&quot;</span><span class="p">);</span>
+</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<p>And with the usage of <code>@Param</code></p>
+<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">AppWithAnnotation.java</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppWithAnnotation</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
+
+<span class="hll">    <span class="nd">@Param</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="s">&quot;/my/parameter/json&quot;</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">JsonTransformer</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+</span>    <span class="n">ObjectToDeserialize</span> <span class="n">value</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h3 id="install_1">Install<a class="headerlink" href="#install_1" title="Permanent link">&para;</a></h3>
+<p>If you want to use the <code>@Param</code> annotation in your project add configuration to compile-time weave (CTW) the powertools-parameters aspects into your project.</p>
+<ul>
+<li><a href="https://maven.apache.org/">maven</a>:</li>
+</ul>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+        ...
+        <span class="nt">&lt;plugin&gt;</span>
+             <span class="nt">&lt;groupId&gt;</span>org.codehaus.mojo<span class="nt">&lt;/groupId&gt;</span>
+             <span class="nt">&lt;artifactId&gt;</span>aspectj-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+             <span class="nt">&lt;version&gt;</span>1.11<span class="nt">&lt;/version&gt;</span>
+             <span class="nt">&lt;configuration&gt;</span>
+                 ...
+                 <span class="nt">&lt;aspectLibraries&gt;</span>
+                     ...
+                     <span class="nt">&lt;aspectLibrary&gt;</span>
+                         <span class="nt">&lt;groupId&gt;</span>software.amazon.lambda<span class="nt">&lt;/groupId&gt;</span>
+                         <span class="nt">&lt;artifactId&gt;</span>powertools-parameters<span class="nt">&lt;/artifactId&gt;</span>
+                     <span class="nt">&lt;/aspectLibrary&gt;</span>
+                 <span class="nt">&lt;/aspectLibraries&gt;</span>
+             <span class="nt">&lt;/configuration&gt;</span>
+             <span class="nt">&lt;executions&gt;</span>
+                 <span class="nt">&lt;execution&gt;</span>
+                     <span class="nt">&lt;goals&gt;</span>
+                         <span class="nt">&lt;goal&gt;</span>compile<span class="nt">&lt;/goal&gt;</span>
+                     <span class="nt">&lt;/goals&gt;</span>
+                 <span class="nt">&lt;/execution&gt;</span>
+             <span class="nt">&lt;/executions&gt;</span>
+        <span class="nt">&lt;/plugin&gt;</span>
+        ...
+    <span class="nt">&lt;/plugins&gt;</span>
+<span class="nt">&lt;/build&gt;</span>
+</code></pre></div>
+</td></tr></table>
+<strong>Note:</strong> If you are working with lambda function on runtime post java8, please refer <a href="https://github.com/awslabs/aws-lambda-powertools-java/issues/50">issue</a> for workaround</p>
+<ul>
+<li><a href="https://gradle.org">gradle</a>:</li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">plugins</span><span class="o">{</span>
+    <span class="n">id</span> <span class="s1">&#39;java&#39;</span>
+    <span class="n">id</span> <span class="s1">&#39;aspectj.AspectjGradlePlugin&#39;</span> <span class="n">version</span> <span class="s1">&#39;0.0.6&#39;</span>
+<span class="o">}</span>
+<span class="n">repositories</span> <span class="o">{</span>
+    <span class="n">jcenter</span><span class="o">()</span>
+<span class="o">}</span>
+<span class="n">dependencies</span> <span class="o">{</span>
+    <span class="o">...</span>
+    <span class="n">implementation</span> <span class="s1">&#39;software.amazon.lambda:powertools-parameters:1.2.0&#39;</span>
+    <span class="n">aspectpath</span> <span class="s1">&#39;software.amazon.lambda:powertools-parameters:1.2.0&#39;</span>
+<span class="o">}</span>
+</code></pre></div>
+</td></tr></table>
+<p><strong>Note:</strong></p>
+<p>Please add <code>aspectjVersion = '1.9.6'</code> to the <code>gradle.properties</code> file. The aspectj plugin works at the moment with gradle 5.x only if
+you are using <code>java 8</code> as runtime. Please refer to <a href="https://github.com/awslabs/aws-lambda-powertools-java/issues/146">open issue</a> for more details.</p>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2021-03-01
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../../core/metrics/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Metrics
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../sqs_large_message_handling/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              SQS Large Message Handling
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 Amazon Web Services
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      
+        <script src="../../javascript/aws-amplify.min.js"></script>
+      
+        <script src="../../javascript/extra.js"></script>
+      
+    
+  </body>
+</html>
