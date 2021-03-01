@@ -376,6 +376,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#lambda-handler" class="md-nav__link">
+    Lambda handler
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#utility" class="md-nav__link">
     Utility
   </a>
@@ -450,6 +457,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#lambda-handler" class="md-nav__link">
+    Lambda handler
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#utility" class="md-nav__link">
     Utility
   </a>
@@ -481,7 +495,8 @@ offloaded to S3 due to them being larger than the SQS maximum.</p>
 <a href="https://github.com/awslabs/amazon-sqs-java-extended-client-lib">amazon-sqs-java-extended-client-lib</a>
 client library. Once the message payloads have been processed successful the
 utility can delete the message payloads from S3.</p>
-<p>This utility is compatible with versions <em>1.1.0+</em> of amazon-sqs-java-extended-client-lib.</p>
+<p>This utility is compatible with versions <em><a href="https://github.com/awslabs/amazon-sqs-java-extended-client-lib">1.1.0+</a></em> of amazon-sqs-java-extended-client-lib.</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Maven</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -493,8 +508,20 @@ utility can delete the message payloads from S3.</p>
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre></div>
 </td></tr></table>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Gradle</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code> <span class="n">dependencies</span> <span class="o">{</span>
+    <span class="n">implementation</span> <span class="s1">&#39;com.amazonaws:amazon-sqs-java-extended-client-lib:1.1.0&#39;</span>
+<span class="o">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
 <h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
 <p>To install this utility, add the following dependency to your project.</p>
+<div class="tabbed-set" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Maven</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -506,7 +533,9 @@ utility can delete the message payloads from S3.</p>
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre></div>
 </td></tr></table>
-<p>And configure the aspectj-maven-plugin to compile-time weave (CTW) the
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Maven Configuration</label><div class="tabbed-content">
+<p>Configure the aspectj-maven-plugin to compile-time weave (CTW) the
 aws-lambda-powertools-java aspects into your project. You may already have this
 plugin in your pom. In that case add the dependency to the <code>aspectLibraries</code>
 section.</p>
@@ -538,9 +567,7 @@ section.</p>
 <span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">&lt;build&gt;</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">&lt;build&gt;</span>
     <span class="nt">&lt;plugins&gt;</span>
         ...
         <span class="nt">&lt;plugin&gt;</span>
@@ -552,13 +579,11 @@ section.</p>
                  <span class="nt">&lt;target&gt;</span>1.8<span class="nt">&lt;/target&gt;</span>
                  <span class="nt">&lt;complianceLevel&gt;</span>1.8<span class="nt">&lt;/complianceLevel&gt;</span>
                  <span class="nt">&lt;aspectLibraries&gt;</span>
-                    <span class="c">&lt;!--    highlight-start    --&gt;</span>
-                     <span class="nt">&lt;aspectLibrary&gt;</span>
-                         <span class="nt">&lt;groupId&gt;</span>software.amazon.lambda<span class="nt">&lt;/groupId&gt;</span>
-                         <span class="nt">&lt;artifactId&gt;</span>powertools-sqs<span class="nt">&lt;/artifactId&gt;</span>
-                     <span class="nt">&lt;/aspectLibrary&gt;</span>
-                     <span class="c">&lt;!--    highlight-end    --&gt;</span>
-                 <span class="nt">&lt;/aspectLibraries&gt;</span>
+<span class="hll">                     <span class="nt">&lt;aspectLibrary&gt;</span>
+</span><span class="hll">                         <span class="nt">&lt;groupId&gt;</span>software.amazon.lambda<span class="nt">&lt;/groupId&gt;</span>
+</span><span class="hll">                         <span class="nt">&lt;artifactId&gt;</span>powertools-sqs<span class="nt">&lt;/artifactId&gt;</span>
+</span><span class="hll">                     <span class="nt">&lt;/aspectLibrary&gt;</span>
+</span>                 <span class="nt">&lt;/aspectLibraries&gt;</span>
              <span class="nt">&lt;/configuration&gt;</span>
              <span class="nt">&lt;executions&gt;</span>
                  <span class="nt">&lt;execution&gt;</span>
@@ -573,10 +598,26 @@ section.</p>
 <span class="nt">&lt;/build&gt;</span>
 </code></pre></div>
 </td></tr></table>
+</div>
+<input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><label for="__tabbed_2_3">Gradle</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code> <span class="n">dependencies</span> <span class="o">{</span>
+    <span class="o">...</span>
+    <span class="n">implementation</span> <span class="s1">&#39;software.amazon.lambda:powertools-sqs:1.2.0&#39;</span>
+    <span class="n">aspectpath</span> <span class="s1">&#39;software.amazon.lambda:powertools-sqs:1.2.0&#39;</span>
+<span class="o">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h2 id="lambda-handler">Lambda handler<a class="headerlink" href="#lambda-handler" title="Permanent link">&para;</a></h2>
 <p>The annotation <code>@SqsLargeMessage</code> should be used with the handleRequest method of a class
 which implements <code>com.amazonaws.services.lambda.runtime.RequestHandler</code> with
 <code>com.amazonaws.services.lambda.runtime.events.SQSEvent</code> as the first parameter.</p>
-<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">SqsMessageHandler.java</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">SqsMessageHandler.java</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -600,16 +641,18 @@ which implements <code>com.amazonaws.services.lambda.runtime.RequestHandler</cod
 </td></tr></table>
 </div>
 </div>
-<p><code>@SqsLargeMessage</code> creates a default S3 Client <code>AmazonS3 amazonS3 = AmazonS3ClientBuilder.defaultClient()</code>.
-When the Lambda function is invoked with an event from SQS, each record received
-in the SQSEvent will be checked to see if it's body contains a payload which has
-been offloaded to S3. If it does then <code>getObject(bucket, key)</code> will be called,
-and the payload retrieved. If there is an error during this process then the
-function will fail with a <code>FailedProcessingLargePayloadException</code> exception.</p>
+<p><code>@SqsLargeMessage</code> creates a default S3 Client <code>AmazonS3 amazonS3 = AmazonS3ClientBuilder.defaultClient()</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When the Lambda function is invoked with an event from SQS, each received record
+in the SQSEvent is checked to see to validate if it is offloaded to S3.
+If it does then <code>getObject(bucket, key)</code> will be called, and the payload retrieved. 
+If there is an error during this process then the function will fail with a <code>FailedProcessingLargePayloadException</code> exception.</p>
 <p>If the request handler method returns without error then each payload will be
 deleted from S3 using <code>deleteObject(bucket, key)</code></p>
+</div>
 <p>To disable deletion of payloads setting the following annotation parameter:</p>
-<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">SqsMessageHandler.java</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Disable payload deletion</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -622,11 +665,11 @@ deleted from S3 using <code>deleteObject(bucket, key)</code></p>
 </div>
 </div>
 <h2 id="utility">Utility<a class="headerlink" href="#utility" title="Permanent link">&para;</a></h2>
-<p>If you want to avoid using annotation and have control over error that can happen during payload enrichment.</p>
-<p><code>SqsUtils.enrichedMessageFromS3()</code> provides you access with list of <code>SQSMessage</code> object enriched from S3 payload.
-Original <code>SQSEvent</code> object is never mutated. You can also control if the S3 payload should be deleted after successful
-processing. You can enrich messages from S3 with below code:</p>
-<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">App.java</label><div class="tabbed-content">
+<p>If you want to avoid using annotation and have control over error that can happen during payload enrichment use <code>SqsUtils.enrichedMessageFromS3()</code>.
+It provides you access with list of <code>SQSMessage</code> object enriched from S3 payload.</p>
+<p>Original <code>SQSEvent</code> object is never mutated. You can also control if the S3 payload should be deleted after successful
+processing.</p>
+<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Functional API without annotation</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
