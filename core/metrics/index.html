@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#initialization" class="md-skip">
+        <a href="#terminologies" class="md-skip">
           Skip to content
         </a>
       
@@ -313,8 +313,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#initialization" class="md-nav__link">
-    Initialization
+  <a href="#terminologies" class="md-nav__link">
+    Terminologies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting started
   </a>
   
 </li>
@@ -324,11 +331,31 @@
     Creating metrics
   </a>
   
+    <nav class="md-nav" aria-label="Creating metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flushing-metrics" class="md-nav__link">
+    Flushing metrics
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-a-metric-with-a-different-dimension" class="md-nav__link">
-    Creating a metric with a different dimension
+  <a href="#capturing-cold-start-metric" class="md-nav__link">
+    Capturing cold start metric
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced" class="md-nav__link">
+    Advanced
   </a>
   
 </li>
@@ -341,8 +368,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#capturing-cold-start-metric" class="md-nav__link">
-    Capturing cold start metric
+  <a href="#creating-a-metric-with-a-different-dimension" class="md-nav__link">
+    Creating a metric with a different dimension
   </a>
   
 </li>
@@ -464,8 +491,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#initialization" class="md-nav__link">
-    Initialization
+  <a href="#terminologies" class="md-nav__link">
+    Terminologies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting started
   </a>
   
 </li>
@@ -475,11 +509,31 @@
     Creating metrics
   </a>
   
+    <nav class="md-nav" aria-label="Creating metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flushing-metrics" class="md-nav__link">
+    Flushing metrics
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-a-metric-with-a-different-dimension" class="md-nav__link">
-    Creating a metric with a different dimension
+  <a href="#capturing-cold-start-metric" class="md-nav__link">
+    Capturing cold start metric
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced" class="md-nav__link">
+    Advanced
   </a>
   
 </li>
@@ -492,8 +546,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#capturing-cold-start-metric" class="md-nav__link">
-    Capturing cold start metric
+  <a href="#creating-a-metric-with-a-different-dimension" class="md-nav__link">
+    Creating a metric with a different dimension
   </a>
   
 </li>
@@ -521,14 +575,52 @@
 <p>These metrics can be visualized through <a href="https://console.aws.amazon.com/cloudwatch/">Amazon CloudWatch Console</a>.</p>
 <p><strong>Key features</strong></p>
 <ul>
-<li>Aggregate up to 100 metrics using a single CloudWatch EMF object (large JSON blob)</li>
-<li>Validate against common metric definitions mistakes (metric unit, values, max dimensions, max metrics, etc)</li>
-<li>Metrics are created asynchronously by the CloudWatch service, no custom stacks needed</li>
-<li>Context manager to create a one off metric with a different dimension</li>
+<li>Aggregate up to 100 metrics using a single CloudWatch EMF object (large JSON blob).</li>
+<li>Validate against common metric definitions mistakes (metric unit, values, max dimensions, max metrics, etc).</li>
+<li>Metrics are created asynchronously by the CloudWatch service, no custom stacks needed.</li>
+<li>Context manager to create a one off metric with a different dimension.</li>
 </ul>
-<h2 id="initialization">Initialization<a class="headerlink" href="#initialization" title="Permanent link">&para;</a></h2>
-<p>Set <code>POWERTOOLS_SERVICE_NAME</code> and <code>POWERTOOLS_METRICS_NAMESPACE</code> env vars as a start - Here is an example using AWS Serverless Application Model (SAM)</p>
-<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">template.yaml</label><div class="tabbed-content">
+<h2 id="terminologies">Terminologies<a class="headerlink" href="#terminologies" title="Permanent link">&para;</a></h2>
+<p>If you're new to Amazon CloudWatch, there are two terminologies you must be aware of before using this utility:</p>
+<ul>
+<li><strong>Namespace</strong>. It's the highest level container that will group multiple metrics from multiple services for a given application, for example <code>ServerlessEcommerce</code>.</li>
+<li><strong>Dimensions</strong>. Metrics metadata in key-value format. They help you slice and dice metrics visualization, for example <code>ColdStart</code> metric by Payment <code>service</code>.</li>
+</ul>
+<figure>
+  <img src="../../media/metrics_terminology.png" />
+  <figcaption>Metric terminology, visually explained</figcaption>
+</figure>
+
+<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<p>Metric has two global settings that will be used across all metrics emitted:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+<th>Environment variable</th>
+<th>Constructor parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Metric namespace</strong></td>
+<td>Logical container where all metrics will be placed e.g. <code>ServerlessAirline</code></td>
+<td><code>POWERTOOLS_METRICS_NAMESPACE</code></td>
+<td><code>namespace</code></td>
+</tr>
+<tr>
+<td><strong>Service</strong></td>
+<td>Optionally, sets <strong>service</strong> metric dimension across all metrics e.g. <code>payment</code></td>
+<td><code>POWERTOOLS_SERVICE_NAME</code></td>
+<td><code>service</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Use your application or main service as the metric namespace to easily group all metrics</p>
+</div>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">template.yaml</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -551,12 +643,7 @@
 </span></code></pre></div>
 </td></tr></table>
 </div>
-</div>
-<p>We recommend you use your application or main service as a metric namespace.
-You can explicitly set a namespace name an annotation variable <code>namespace</code> param or via <code>POWERTOOLS_METRICS_NAMESPACE</code> env var.</p>
-<p>This sets <strong>namespace</strong> key that will be used for all metrics.
-You can also pass a service name via <code>service</code> param or <code>POWERTOOLS_SERVICE_NAME</code> env var. This will create a dimension with the service name.</p>
-<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">MetricsEnabledHandler.java</label><div class="tabbed-content">
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">MetricsEnabledHandler.java</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -582,8 +669,8 @@ You can also pass a service name via <code>service</code> param or <code>POWERTO
 </div>
 <p>You can initialize Metrics anywhere in your code as many times as you need - It'll keep track of your aggregate metrics in memory.</p>
 <h2 id="creating-metrics">Creating metrics<a class="headerlink" href="#creating-metrics" title="Permanent link">&para;</a></h2>
-<p>You can create metrics using <code>putMetric</code>, and manually create dimensions for all your aggregate metrics using <code>add_dimension</code>.</p>
-<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">MetricsEnabledHandler.java</label><div class="tabbed-content">
+<p>You can create metrics using <code>putMetric</code>, and manually create dimensions for all your aggregate metrics using <code>putDimensions</code>.</p>
+<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">MetricsEnabledHandler.java</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -611,25 +698,58 @@ You can also pass a service name via <code>service</code> param or <code>POWERTO
 </td></tr></table>
 </div>
 </div>
-<p>The <code>Unit</code> enum facilitate finding a supported metric unit by CloudWatch.</p>
-<p>CloudWatch EMF supports a max of 100 metrics. Metrics utility will flush all metrics when adding the 100th metric while subsequent metrics will be aggregated into a new EMF object, for your convenience.</p>
-<h2 id="creating-a-metric-with-a-different-dimension">Creating a metric with a different dimension<a class="headerlink" href="#creating-a-metric-with-a-different-dimension" title="Permanent link">&para;</a></h2>
-<p>CloudWatch EMF uses the same dimensions across all your metrics. Use <code>single_metric</code> if you have a metric that should have different dimensions.</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Generally, this would be an edge case since you <a href="https://aws.amazon.com/cloudwatch/pricing/">pay for unique metric</a>. Keep the following formula in mind:
-<strong>unique metric = (metric_name + dimension_name + dimension_value)</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">The <code>Unit</code> enum facilitate finding a supported metric unit by CloudWatch.</p>
 </div>
-<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">App.java</label><div class="tabbed-content">
+<div class="admonition note">
+<p class="admonition-title">Metrics overflow</p>
+<p>CloudWatch EMF supports a max of 100 metrics. Metrics utility will flush all metrics when adding the 100th metric while subsequent metrics will be aggregated into a new EMF object, for your convenience.</p>
+</div>
+<h3 id="flushing-metrics">Flushing metrics<a class="headerlink" href="#flushing-metrics" title="Permanent link">&para;</a></h3>
+<p>The <code>@Metrics</code> annotation <strong>validates</strong>, <strong>serializes</strong>, and <strong>flushes</strong> all your metrics. During metrics validation, 
+if no metrics are provided no exception will be raised. If metrics are provided, and any of the following criteria are 
+not met, <code>ValidationException</code> exception will be raised.</p>
+<div class="admonition tip">
+<p class="admonition-title">Metric validation</p>
+<ul>
+<li>Minimum of 1 dimension</li>
+<li>Maximum of 9 dimensions</li>
+</ul>
+</div>
+<p>If you want to ensure that at least one metric is emitted, you can pass <code>raiseOnEmptyMetrics = true</code> to the <strong>@Metrics</strong> annotation:</p>
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">App.java</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">withSingleMetric</span><span class="p">(</span><span class="s">&quot;CustomMetrics2&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Unit</span><span class="p">.</span><span class="na">COUNT</span><span class="p">,</span> <span class="s">&quot;Another&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">metric</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">{</span>
-    <span class="n">metric</span><span class="p">.</span><span class="na">setDimensions</span><span class="p">(</span><span class="n">DimensionSet</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;AnotherService&quot;</span><span class="p">,</span> <span class="s">&quot;CustomService&quot;</span><span class="p">));</span>
-<span class="p">});</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="nd">@Metrics</span><span class="p">(</span><span class="n">raiseOnEmptyMetrics</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
+</span><span class="kd">public</span> <span class="n">Object</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="n">Object</span> <span class="n">input</span><span class="p">,</span> <span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">...</span>
+<span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
 </div>
 </div>
+<h2 id="capturing-cold-start-metric">Capturing cold start metric<a class="headerlink" href="#capturing-cold-start-metric" title="Permanent link">&para;</a></h2>
+<p>You can capture cold start metrics automatically with <code>@Metrics</code> via the <code>captureColdStart</code> variable.</p>
+<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">App.java</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="nd">@Metrics</span><span class="p">(</span><span class="n">captureColdStart</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
+</span><span class="kd">public</span> <span class="n">Object</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="n">Object</span> <span class="n">input</span><span class="p">,</span> <span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<p>If it's a cold start invocation, this feature will:</p>
+<ul>
+<li>Create a separate EMF blob solely containing a metric named <code>ColdStart</code></li>
+<li>Add <code>FunctionName</code> and <code>Service</code> dimensions</li>
+</ul>
+<p>This has the advantage of keeping cold start metric separate from your application metrics.</p>
+<h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h2>
 <h2 id="adding-metadata">Adding metadata<a class="headerlink" href="#adding-metadata" title="Permanent link">&para;</a></h2>
 <p>You can use <code>putMetadata</code> for advanced use cases, where you want to metadata as part of the serialized metrics object.</p>
 <div class="admonition info">
@@ -653,45 +773,23 @@ You can also pass a service name via <code>service</code> param or <code>POWERTO
 </div>
 </div>
 <p>This will be available in CloudWatch Logs to ease operations on high cardinal data.</p>
-<p>The <code>@Metrics</code> annotation <strong>validates</strong>, <strong>serializes</strong>, and <strong>flushes</strong> all your metrics. During metrics validation, if no metrics are provided no exception will be raised.</p>
-<p>If metrics are provided, and any of the following criteria are not met, <code>ValidationException</code> exception will be raised:</p>
-<ul>
-<li>Minimum of 1 dimension</li>
-<li>Maximum of 9 dimensions</li>
-</ul>
-<p>If you want to ensure that at least one metric is emitted, you can pass <code>raiseOnEmptyMetrics = true</code> to the <strong>@Metrics</strong> annotation:</p>
+<h2 id="creating-a-metric-with-a-different-dimension">Creating a metric with a different dimension<a class="headerlink" href="#creating-a-metric-with-a-different-dimension" title="Permanent link">&para;</a></h2>
+<p>CloudWatch EMF uses the same dimensions across all your metrics. Use <code>withSingleMetric</code> if you have a metric that should have different dimensions.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Generally, this would be an edge case since you <a href="https://aws.amazon.com/cloudwatch/pricing/">pay for unique metric</a>. Keep the following formula in mind:
+<strong>unique metric = (metric_name + dimension_name + dimension_value)</strong></p>
+</div>
 <div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">App.java</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="nd">@Metrics</span><span class="p">(</span><span class="n">raiseOnEmptyMetrics</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
-</span><span class="kd">public</span> <span class="n">Object</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="n">Object</span> <span class="n">input</span><span class="p">,</span> <span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-<span class="p">...</span>
-<span class="p">}</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">withSingleMetric</span><span class="p">(</span><span class="s">&quot;CustomMetrics2&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Unit</span><span class="p">.</span><span class="na">COUNT</span><span class="p">,</span> <span class="s">&quot;Another&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">metric</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">{</span>
+    <span class="n">metric</span><span class="p">.</span><span class="na">setDimensions</span><span class="p">(</span><span class="n">DimensionSet</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;AnotherService&quot;</span><span class="p">,</span> <span class="s">&quot;CustomService&quot;</span><span class="p">));</span>
+<span class="p">});</span>
 </code></pre></div>
 </td></tr></table>
 </div>
 </div>
-<h2 id="capturing-cold-start-metric">Capturing cold start metric<a class="headerlink" href="#capturing-cold-start-metric" title="Permanent link">&para;</a></h2>
-<p>You can capture cold start metrics automatically with <code>@Metrics</code> via the <code>captureColdStart</code> variable.</p>
-<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">App.java</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="nd">@Metrics</span><span class="p">(</span><span class="n">captureColdStart</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
-</span><span class="kd">public</span> <span class="n">Object</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="n">Object</span> <span class="n">input</span><span class="p">,</span> <span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-<span class="p">...</span>
-<span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
-</div>
-</div>
-<p>If it's a cold start invocation, this feature will:</p>
-<ul>
-<li>Create a separate EMF blob solely containing a metric named <code>ColdStart</code></li>
-<li>Add <code>FunctionName</code> and <code>Service</code> dimensions</li>
-</ul>
-<p>This has the advantage of keeping cold start metric separate from your application metrics.</p>
                 
                   
                     

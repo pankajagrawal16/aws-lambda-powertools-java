@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#annotations" class="md-skip">
+        <a href="#lambda-handler" class="md-skip">
           Skip to content
         </a>
       
@@ -301,15 +301,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    Annotations
+  <a href="#lambda-handler" class="md-nav__link">
+    Lambda handler
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#metadata" class="md-nav__link">
-    Metadata
+  <a href="#annotations-metadata" class="md-nav__link">
+    Annotations &amp; Metadata
   </a>
   
 </li>
@@ -457,15 +457,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    Annotations
+  <a href="#lambda-handler" class="md-nav__link">
+    Lambda handler
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#metadata" class="md-nav__link">
-    Metadata
+  <a href="#annotations-metadata" class="md-nav__link">
+    Annotations &amp; Metadata
   </a>
   
 </li>
@@ -511,9 +511,13 @@ a provides functionality to reduce the overhead of performing common tracing tas
 <li>Capture cold start as annotation, and responses as well as full exceptions as metadata</li>
 <li>Helper methods to improve the developer experience of creating new X-Ray subsegments.</li>
 <li>Better developer experience when developing with multiple threads.</li>
+<li>Auto patch supported modules by AWS X-Ray</li>
 </ul>
-<p>Initialization
-Your AWS Lambda function must have permission to send traces to AWS X-Ray - Here is an example using AWS Serverless Application Model (SAM)</p>
+<p>Initialization</p>
+<p>Before your use this utility, your AWS Lambda function <a href="https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html#services-xray-permissions">must have permissions</a> to send traces to AWS X-Ray.</p>
+<blockquote>
+<p>Example using AWS Serverless Application Model (SAM)</p>
+</blockquote>
 <div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">template.yaml</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -542,9 +546,11 @@ Your AWS Lambda function must have permission to send traces to AWS X-Ray - Here
 </div>
 <p>The Powertools service name is used as the X-Ray namespace. This can be set using the environment variable
 <code>POWERTOOLS_SERVICE_NAME</code></p>
-<p>To enable Powertools tracing to your function add the @Tracing annotation to your handleRequest method or on
-any method will capture the method as a separate subsegment automatically.</p>
-<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">App.java</label><div class="tabbed-content">
+<h3 id="lambda-handler">Lambda handler<a class="headerlink" href="#lambda-handler" title="Permanent link">&para;</a></h3>
+<p>To enable Powertools tracing to your function add the <code>@Tracing annotation to your</code>handleRequest` method or on
+any method will capture the method as a separate subsegment automatically. You can optionally choose to customize 
+segment name that appears in traces.</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Tracing annotation</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -585,9 +591,7 @@ any method will capture the method as a separate subsegment automatically.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-</div>
-<p>If you want to customize segment name that appears in traces, use:</p>
-<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">App.java</label><div class="tabbed-content">
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Custom Segment names</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -611,7 +615,7 @@ different supported <code>captureMode</code> to record response, exception or bo
 <p>You can disable annotation from capturing their responses and exception as tracing metadata with <strong><code>captureMode=DISABLED</code></strong>
 or globally by setting environment variables <strong><code>POWERTOOLS_TRACER_CAPTURE_RESPONSE</code></strong> and <strong><code>POWERTOOLS_TRACER_CAPTURE_ERROR</code></strong> to <strong><code>false</code></strong></p>
 </div>
-<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">App.java</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Disable on annotation</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -626,9 +630,7 @@ or globally by setting environment variables <strong><code>POWERTOOLS_TRACER_CAP
 </code></pre></div>
 </td></tr></table>
 </div>
-</div>
-<p>Globally:</p>
-<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">template.yaml</label><div class="tabbed-content">
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Disable Globally</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -656,10 +658,13 @@ or globally by setting environment variables <strong><code>POWERTOOLS_TRACER_CAP
 </td></tr></table>
 </div>
 </div>
-<h3 id="annotations">Annotations<a class="headerlink" href="#annotations" title="Permanent link">&para;</a></h3>
-<p>Annotations are key-values indexed by AWS X-Ray on a per trace basis. You can use them to filter traces as well as to create <a href="https://aws.amazon.com/about-aws/whats-new/2018/11/aws-xray-adds-the-ability-to-group-traces/">Trace Groups</a>.</p>
-<p>You can add annotations using <code>putAnnotation()</code> method from TracingUtils and it will be correctly inject for the subsegment in concern.</p>
-<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">App.java</label><div class="tabbed-content">
+<h3 id="annotations-metadata">Annotations &amp; Metadata<a class="headerlink" href="#annotations-metadata" title="Permanent link">&para;</a></h3>
+<p><strong>Annotations</strong> are key-values associated with traces and indexed by AWS X-Ray. You can use them to filter traces and to
+create <a href="https://aws.amazon.com/about-aws/whats-new/2018/11/aws-xray-adds-the-ability-to-group-traces/">Trace Groups</a> to slice and dice your transactions.</p>
+<p><strong>Metadata</strong> are key-values also associated with traces but not indexed by AWS X-Ray. You can use them to add additional 
+context for an operation using any native object.</p>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Annotations</label><div class="tabbed-content">
+<p>You can add annotations using <code>putAnnotation()</code> method from TracingUtils
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -674,13 +679,10 @@ or globally by setting environment variables <strong><code>POWERTOOLS_TRACER_CAP
 </span>    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-</td></tr></table>
+</td></tr></table></p>
 </div>
-</div>
-<h3 id="metadata">Metadata<a class="headerlink" href="#metadata" title="Permanent link">&para;</a></h3>
-<p>Metadata are non-indexed values that can add additional context for an operation.</p>
-<p>You can add metadata using <code>putMetadata()</code> method from TracingUtils and it will be correctly inject for the subsegment in concern.</p>
-<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">App.java</label><div class="tabbed-content">
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Metadata</label><div class="tabbed-content">
+<p>You can add metadata using <code>putMetadata()</code> method from TracingUtils
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -695,13 +697,13 @@ or globally by setting environment variables <strong><code>POWERTOOLS_TRACER_CAP
 </span>    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-</td></tr></table>
+</td></tr></table></p>
 </div>
 </div>
 <h2 id="utilities">Utilities<a class="headerlink" href="#utilities" title="Permanent link">&para;</a></h2>
 <p>Tracer modules comes with certain utility method when you don't want to use annotation for capturing a code block
 under a subsegment, or you are doing multithreaded programming. Refer examples below.</p>
-<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">App.java</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Functional Api</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -728,7 +730,7 @@ under a subsegment, or you are doing multithreaded programming. Refer examples b
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">ThreadedProgramming.java</label><div class="tabbed-content">
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Multi Threaded Programming</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>

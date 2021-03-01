@@ -503,20 +503,18 @@
 <li><strong>Idiomatic</strong> – Utilities follow programming language idioms and language-specific best practices.</li>
 </ul>
 <h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
+<p>Powertools dependencies are available in Maven Central. You can use your favourite dependency management tool to install it</p>
+<ul>
+<li><a href="https://maven.apache.org/">Maven</a></li>
+<li><a href="https://gradle.org">Gradle</a></li>
+</ul>
 <p><strong>Quick hello world examples using SAM CLI</strong></p>
 <p>You can use <a href="https://aws.amazon.com/serverless/sam/">SAM</a> to quickly setup a serverless project including AWS Lambda Powertools Java.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  sam init --location gh:aws-samples/cookiecutter-aws-sam-powertools-java
 </code></pre></div>
 </td></tr></table>
-<p>Powertools dependencies are available in Maven Central. You can use your favourite dependency management tool to install it</p>
-<ul>
-<li><a href="https://maven.apache.org/">maven</a></li>
-<li><a href="https://gradle.org">gradle</a></li>
-</ul>
 <p>For more information about the project and available options refer to this <a href="https://github.com/aws-samples/cookiecutter-aws-sam-powertools-java/blob/main/README.md">repository</a></p>
-<ul>
-<li><a href="https://maven.apache.org/">maven</a>:</li>
-</ul>
+<div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Maven</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -556,8 +554,10 @@
 <span class="nt">&lt;/dependencies&gt;</span>
 </code></pre></div>
 </td></tr></table>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Maven Configuration</label><div class="tabbed-content">
 <p>And configure the aspectj-maven-plugin to compile-time weave (CTW) the aws-lambda-powertools-java aspects into your project:</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -632,10 +632,9 @@
 <span class="nt">&lt;/build&gt;</span>
 </code></pre></div>
 </td></tr></table>
-<strong>Note:</strong> If you are working with lambda function on runtime post java8, please refer <a href="https://github.com/awslabs/aws-lambda-powertools-java/issues/50">issue</a> for workaround.</p>
-<ul>
-<li><a href="https://gradle.org">gradle</a>:</li>
-</ul>
+<p><strong>Note:</strong> If you are working with lambda function on runtime post java8, please refer <a href="https://github.com/awslabs/aws-lambda-powertools-java/issues/50">issue</a> for workaround.</p>
+</div>
+<input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><label for="__tabbed_1_3">Gradle</label><div class="tabbed-content">
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -670,6 +669,8 @@
 <strong>Note:</strong></p>
 <p>Please add <code>aspectjVersion = '1.9.6'</code> to the <code>gradle.properties</code> file. The aspectj plugin works at the moment with gradle 5.x only if
 you are using <code>java 8</code> as runtime. Please refer to <a href="https://github.com/awslabs/aws-lambda-powertools-java/issues/146">open issue</a> for more details.</p>
+</div>
+</div>
 <h2 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">Info</p>

@@ -543,6 +543,7 @@
 </ul>
 <h2 id="initialization">Initialization<a class="headerlink" href="#initialization" title="Permanent link">&para;</a></h2>
 <p>Powertools extends the functionality of Log4J. Below is an example log4j2.xml file, with the LambdaJsonLayout configured.</p>
+<p>=== log4j2.xml</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -558,25 +559,29 @@
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;Configuration</span> <span class="na">packages=</span><span class="s">&quot;com.amazonaws.services.lambda.runtime.log4j2&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;Appenders&gt;</span>
-        <span class="nt">&lt;Console</span> <span class="na">name=</span><span class="s">&quot;JsonAppender&quot;</span> <span class="na">target=</span><span class="s">&quot;SYSTEM_OUT&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;LambdaJsonLayout</span> <span class="na">compact=</span><span class="s">&quot;true&quot;</span> <span class="na">eventEol=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/Console&gt;</span>
-    <span class="nt">&lt;/Appenders&gt;</span>
-    <span class="nt">&lt;Loggers&gt;</span>
-        <span class="nt">&lt;Logger</span> <span class="na">name=</span><span class="s">&quot;JsonLogger&quot;</span> <span class="na">level=</span><span class="s">&quot;INFO&quot;</span> <span class="na">additivity=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;AppenderRef</span> <span class="na">ref=</span><span class="s">&quot;JsonAppender&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/Logger&gt;</span>
-        <span class="nt">&lt;Root</span> <span class="na">level=</span><span class="s">&quot;info&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;AppenderRef</span> <span class="na">ref=</span><span class="s">&quot;JsonAppender&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/Root&gt;</span>
-    <span class="nt">&lt;/Loggers&gt;</span>
-<span class="nt">&lt;/Configuration&gt;</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>```xml
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Configuration packages=&quot;com.amazonaws.services.lambda.runtime.log4j2&quot;&gt;
+    &lt;Appenders&gt;
+        &lt;Console name=&quot;JsonAppender&quot; target=&quot;SYSTEM_OUT&quot;&gt;
+            &lt;LambdaJsonLayout compact=&quot;true&quot; eventEol=&quot;true&quot;/&gt;
+        &lt;/Console&gt;
+    &lt;/Appenders&gt;
+    &lt;Loggers&gt;
+        &lt;Logger name=&quot;JsonLogger&quot; level=&quot;INFO&quot; additivity=&quot;false&quot;&gt;
+            &lt;AppenderRef ref=&quot;JsonAppender&quot;/&gt;
+        &lt;/Logger&gt;
+        &lt;Root level=&quot;info&quot;&gt;
+            &lt;AppenderRef ref=&quot;JsonAppender&quot;/&gt;
+        &lt;/Root&gt;
+    &lt;/Loggers&gt;
+&lt;/Configuration&gt;
+```
 </code></pre></div>
 </td></tr></table>
-<p>You can also override log level by setting <code>POWERTOOLS_LOG_LEVEL</code> env var  - Here is an example using AWS Serverless Application Model (SAM)</p>
+<p>You can also override log level by setting <strong><code>POWERTOOLS_LOG_LEVEL</code></strong> env var. Here is an example using AWS Serverless Application Model (SAM)</p>
 <div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">template.yaml</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -601,7 +606,7 @@
 </td></tr></table>
 </div>
 </div>
-<p>You can also explicitly set a service name via <code>POWERTOOLS_SERVICE_NAME</code> env var. This sets <strong>service</strong> key that will be present across all log statements.</p>
+<p>You can also explicitly set a service name via <strong><code>POWERTOOLS_SERVICE_NAME</code></strong> env var. This sets <strong>service</strong> key that will be present across all log statements.</p>
 <h2 id="standard-structured-keys">Standard structured keys<a class="headerlink" href="#standard-structured-keys" title="Permanent link">&para;</a></h2>
 <p>Your Logger will always include the following keys to your structured logging:</p>
 <table>
@@ -689,8 +694,14 @@
 </tbody>
 </table>
 <h2 id="capturing-context-lambda-info">Capturing context Lambda info<a class="headerlink" href="#capturing-context-lambda-info" title="Permanent link">&para;</a></h2>
-<p>You can enrich your structured logs with key Lambda context information via <code>logEvent</code> annotation parameter.</p>
-<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">App.java</label><div class="tabbed-content">
+<p>You can enrich your structured logs with key Lambda context information via <code>logEvent</code> annotation parameter. 
+You can also explicitly log any incoming event using <code>logEvent</code> param. Refer <a href="#override-default-object-mapper">Override default object mapper</a> 
+to customise what is logged.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Log event is disabled by default to prevent sensitive info being logged.</p>
+</div>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">App.java</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -729,14 +740,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-</div>
-<p>You can also explicitly log any incoming event using <code>logEvent</code> param.
-Refer <a href="#override-default-object-mapper">Override default object mapper</a> to customise what is logged.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This is disabled by default to prevent sensitive info being logged.</p>
-</div>
-<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">App.java</label><div class="tabbed-content">
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">AppLogEvent.java</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -751,7 +755,7 @@ Refer <a href="#override-default-object-mapper">Override default object mapper</
 <span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/**</span>
 <span class="cm"> * Handler for requests to Lambda function.</span>
 <span class="cm"> */</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">App</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppLogEvent</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
 
     <span class="n">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="n">LogManager</span><span class="p">.</span><span class="na">getLogger</span><span class="p">();</span>
 
@@ -766,7 +770,7 @@ Refer <a href="#override-default-object-mapper">Override default object mapper</
 </div>
 <h2 id="appending-additional-keys">Appending additional keys<a class="headerlink" href="#appending-additional-keys" title="Permanent link">&para;</a></h2>
 <p>You can append your own keys to your existing Logger via <code>appendKey</code>.</p>
-<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">App.java</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">App.java</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -818,7 +822,7 @@ Refer <a href="#override-default-object-mapper">Override default object mapper</
 <p>You can optionally choose to override default object mapper which is used to serialize lambda function events. You might
 want to supply custom object mapper in order to control how serialisation is done, for example, when you want to log only
 specific fields from received event due to security.</p>
-<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">App.java</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">App.java</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -858,9 +862,12 @@ specific fields from received event due to security.</p>
 </div>
 <h2 id="sampling-debug-logs">Sampling debug logs<a class="headerlink" href="#sampling-debug-logs" title="Permanent link">&para;</a></h2>
 <p>You can dynamically set a percentage of your logs to <strong>DEBUG</strong> level via env var <code>POWERTOOLS_LOGGER_SAMPLE_RATE</code> or
-via <code>samplingRate</code> attribute on annotation.</p>
+via <code>samplingRate</code> attribute on annotation. </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
 <p>Configuration on environment variable is given precedence over sampling rate configuration on annotation, provided it's in valid value range.</p>
-<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">App.java</label><div class="tabbed-content">
+</div>
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Sampling via annotation attribute</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -887,9 +894,7 @@ via <code>samplingRate</code> attribute on annotation.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-</div>
-<p>You can also override sampling by setting <code>POWERTOOLS_LOGGER_SAMPLE_RATE</code> env var  - Here is an example using AWS Serverless Application Model (SAM)</p>
-<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">template.yaml</label><div class="tabbed-content">
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Sampling via environment variable</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
