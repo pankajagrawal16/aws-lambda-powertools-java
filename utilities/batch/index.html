@@ -695,7 +695,7 @@ utility will have access to both successful and failed messaged along with failu
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>You will not have accessed to the <strong>processed messages</strong> within the Lambda Handler - all processing logic will and should be performed by the implemented <code>SqsMessageHandler#process()</code> function.</p>
+<p>You will not have access to the <strong>processed messages</strong> within the Lambda Handler - all processing logic will and should be performed by the implemented <code>SqsMessageHandler#process()</code> function.</p>
 </div>
 <div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">AppSqsEvent.java</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -740,7 +740,7 @@ utility will have access to both successful and failed messaged along with failu
 <h3 id="sqsutils-utility-api">SqsUtils Utility API<a class="headerlink" href="#sqsutils-utility-api" title="Permanent link">&para;</a></h3>
 <p>If you require access to the result of processed messages, you can use this utility.</p>
 <p>The result from calling <strong><code>SqsUtils#batchProcessor()</code></strong> on the context manager will be a list of all the return values 
-from your <strong>`SqsMessageHandler#process()``</strong> function.</p>
+from your <strong><code>SqsMessageHandler#process()</code></strong> function.</p>
 <p>You can also use the utility in functional way by providing inline implementation of functional interface <strong><code>SqsMessageHandler#process()</code></strong></p>
 <div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Utility API</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
