@@ -14,7 +14,7 @@
       
       
       <link rel="shortcut icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.4">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.1655a90d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.77f3fd56.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
@@ -531,18 +531,15 @@
                 
                   <h1>Logging</h1>
                 
-                <p>Logger provides an opinionated logger with output structured as JSON.</p>
+                <p>Logging provides an opinionated logger with output structured as JSON.</p>
 <p><strong>Key features</strong></p>
 <ul>
 <li>Capture key fields from Lambda context, cold start and structures logging output as JSON</li>
-<li>Log Lambda event when instructed (disabled by default)<ul>
-<li>Enable explicitly via annotation param</li>
-</ul>
-</li>
+<li>Log Lambda event when instructed, disabled by default, can be enabled explicitly via annotation param</li>
 <li>Append additional keys to structured log at any point in time</li>
 </ul>
 <h2 id="initialization">Initialization<a class="headerlink" href="#initialization" title="Permanent link">&para;</a></h2>
-<p>Powertools extends the functionality of Log4J. Below is an example log4j2.xml file, with the LambdaJsonLayout configured.</p>
+<p>Powertools extends the functionality of Log4J. Below is an example <code class="highlight">log4j2.xml</code> file, with the <code class="highlight"><span class="n">LambdaJsonLayout</span></code> configured.</p>
 <div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">log4j2.xml</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -563,8 +560,8 @@
 <span class="nt">&lt;Configuration</span> <span class="na">packages=</span><span class="s">&quot;com.amazonaws.services.lambda.runtime.log4j2&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Appenders&gt;</span>
         <span class="nt">&lt;Console</span> <span class="na">name=</span><span class="s">&quot;JsonAppender&quot;</span> <span class="na">target=</span><span class="s">&quot;SYSTEM_OUT&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;LambdaJsonLayout</span> <span class="na">compact=</span><span class="s">&quot;true&quot;</span> <span class="na">eventEol=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/Console&gt;</span>
+<span class="hll">            <span class="nt">&lt;LambdaJsonLayout</span> <span class="na">compact=</span><span class="s">&quot;true&quot;</span> <span class="na">eventEol=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+</span>        <span class="nt">&lt;/Console&gt;</span>
     <span class="nt">&lt;/Appenders&gt;</span>
     <span class="nt">&lt;Loggers&gt;</span>
         <span class="nt">&lt;Logger</span> <span class="na">name=</span><span class="s">&quot;JsonLogger&quot;</span> <span class="na">level=</span><span class="s">&quot;INFO&quot;</span> <span class="na">additivity=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
@@ -606,7 +603,7 @@
 </div>
 <p>You can also explicitly set a service name via <strong><code>POWERTOOLS_SERVICE_NAME</code></strong> env var. This sets <strong>service</strong> key that will be present across all log statements.</p>
 <h2 id="standard-structured-keys">Standard structured keys<a class="headerlink" href="#standard-structured-keys" title="Permanent link">&para;</a></h2>
-<p>Your Logger will always include the following keys to your structured logging:</p>
+<p>Your logs will always include the following keys to your structured logging:</p>
 <table>
 <thead>
 <tr>
@@ -767,7 +764,7 @@ to customise what is logged.</p>
 </div>
 </div>
 <h2 id="appending-additional-keys">Appending additional keys<a class="headerlink" href="#appending-additional-keys" title="Permanent link">&para;</a></h2>
-<p>You can append your own keys to your existing Logger via <code>appendKey</code>.</p>
+<p>You can append your own keys to your existing logs via <code>appendKey</code>.</p>
 <div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">App.java</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -922,7 +919,7 @@ via <code>samplingRate</code> attribute on annotation. </p>
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-03-01
+      Last update: 2021-03-04
     
   </small>
 </div>
@@ -1000,7 +997,7 @@ via <code>samplingRate</code> attribute on annotation. </p>
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      <script src="../../assets/javascripts/bundle.9b151c6a.min.js"></script>
       
         <script src="../../javascript/aws-amplify.min.js"></script>
       

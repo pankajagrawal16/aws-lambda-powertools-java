@@ -14,7 +14,7 @@
       
       
       <link rel="shortcut icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.4">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.1655a90d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.77f3fd56.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
@@ -746,10 +746,16 @@ in order to get data from other regions or use specific credentials.</p>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppWithSSM</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
-    <span class="c1">// Get an instance of the SSM Provider</span>
-    <span class="n">SSMProvider</span> <span class="n">ssmProvider</span> <span class="o">=</span> <span class="n">ParamManager</span><span class="p">.</span><span class="na">getSsmProvider</span><span class="p">();</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.parameters.SSMProvider</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.parameters.ParamManager</span><span class="p">;</span>
 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppWithSSM</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="c1">// Get an instance of the SSM Provider</span>
+<span class="hll">    <span class="n">SSMProvider</span> <span class="n">ssmProvider</span> <span class="o">=</span> <span class="n">ParamManager</span><span class="p">.</span><span class="na">getSsmProvider</span><span class="p">();</span>
+</span>
     <span class="c1">// Retrieve a single parameter</span>
     <span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="n">ssmProvider</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;/my/parameter&quot;</span><span class="p">);</span>
 
@@ -774,7 +780,13 @@ in order to get data from other regions or use specific credentials.</p>
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppWithSSM</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.parameters.SSMProvider</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.parameters.ParamManager</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppWithSSM</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
 <span class="hll">    <span class="n">SsmClient</span> <span class="n">client</span> <span class="o">=</span> <span class="n">SsmClient</span><span class="p">.</span><span class="na">builder</span><span class="p">().</span><span class="na">region</span><span class="p">(</span><span class="n">Region</span><span class="p">.</span><span class="na">EU_CENTRAL_1</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
 </span>    <span class="c1">// Get an instance of the SSM Provider</span>
 <span class="hll">    <span class="n">SSMProvider</span> <span class="n">ssmProvider</span> <span class="o">=</span> <span class="n">ParamManager</span><span class="p">.</span><span class="na">getSsmProvider</span><span class="p">(</span><span class="n">client</span><span class="p">);</span>
@@ -826,7 +838,13 @@ in order to get data from other regions or use specific credentials.</p>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppWithSSM</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.parameters.SSMProvider</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.parameters.ParamManager</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppWithSSM</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
     <span class="c1">// Get an instance of the SSM Provider</span>
     <span class="n">SSMProvider</span> <span class="n">ssmProvider</span> <span class="o">=</span> <span class="n">ParamManager</span><span class="p">.</span><span class="na">getSsmProvider</span><span class="p">();</span>
 
@@ -846,14 +864,20 @@ in order to get data from other regions or use specific credentials.</p>
 <p>Alternatively, you can retrieve an instance of a provider and configure its underlying SDK client,
 in order to get data from other regions or use specific credentials.</p>
 <div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">SecretsProvider</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppWithSecrets</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.parameters.SecretsProvider</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.parameters.ParamManager</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppWithSecrets</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
     <span class="c1">// Get an instance of the Secrets Provider</span>
     <span class="n">SecretsProvider</span> <span class="n">secretsProvider</span> <span class="o">=</span> <span class="n">ParamManager</span><span class="p">.</span><span class="na">getSecretsProvider</span><span class="p">();</span>
 
@@ -865,15 +889,21 @@ in order to get data from other regions or use specific credentials.</p>
 </td></tr></table>
 </div>
 <input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">SecretsProvider with an explicit region</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppWithSecrets</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.parameters.SecretsProvider</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.parameters.ParamManager</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppWithSecrets</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
 <span class="hll">    <span class="n">SecretsManagerClient</span> <span class="n">client</span> <span class="o">=</span> <span class="n">SecretsManagerClient</span><span class="p">.</span><span class="na">builder</span><span class="p">().</span><span class="na">region</span><span class="p">(</span><span class="n">Region</span><span class="p">.</span><span class="na">EU_CENTRAL_1</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
 </span>    <span class="c1">// Get an instance of the Secrets Provider</span>
 <span class="hll">    <span class="n">SecretsProvider</span> <span class="n">secretsProvider</span> <span class="o">=</span> <span class="n">ParamManager</span><span class="p">.</span><span class="na">getSecretsProvider</span><span class="p">(</span><span class="n">client</span><span class="p">);</span>
@@ -892,14 +922,20 @@ in order to get data from other regions or use specific credentials.</p>
 <p>You can customize this default value using <code>defaultMaxAge</code>. You can also customize this value for each parameter using 
 <code>withMaxAge</code>.</p>
 <div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Provider with default Max age</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppWithSecrets</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.parameters.SecretsProvider</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.parameters.ParamManager</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppWithSecrets</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
     <span class="c1">// Get an instance of the Secrets Provider</span>
     <span class="n">SecretsProvider</span> <span class="n">secretsProvider</span> <span class="o">=</span> <span class="n">ParamManager</span><span class="p">.</span><span class="na">getSecretsProvider</span><span class="p">()</span>
                                                   <span class="p">.</span><span class="na">defaultMaxAge</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">ChronoUnit</span><span class="p">.</span><span class="na">SECONDS</span><span class="p">);</span>
@@ -911,14 +947,20 @@ in order to get data from other regions or use specific credentials.</p>
 </td></tr></table>
 </div>
 <input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Provider with age for each param</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppWithSecrets</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.parameters.SecretsProvider</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.parameters.ParamManager</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppWithSecrets</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
     <span class="n">SecretsManagerClient</span> <span class="n">client</span> <span class="o">=</span> <span class="n">SecretsManagerClient</span><span class="p">.</span><span class="na">builder</span><span class="p">().</span><span class="na">region</span><span class="p">(</span><span class="n">Region</span><span class="p">.</span><span class="na">EU_CENTRAL_1</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
 
     <span class="n">SecretsProvider</span> <span class="n">secretsProvider</span> <span class="o">=</span> <span class="n">ParamManager</span><span class="p">.</span><span class="na">getSecretsProvider</span><span class="p">(</span><span class="n">client</span><span class="p">);</span>
@@ -1281,7 +1323,7 @@ you are using <code>java 8</code> as runtime. Please refer to <a href="https://g
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-03-01
+      Last update: 2021-03-04
     
   </small>
 </div>
@@ -1359,7 +1401,7 @@ you are using <code>java 8</code> as runtime. Please refer to <a href="https://g
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      <script src="../../assets/javascripts/bundle.9b151c6a.min.js"></script>
       
         <script src="../../javascript/aws-amplify.min.js"></script>
       

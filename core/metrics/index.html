@@ -14,7 +14,7 @@
       
       
       <link rel="shortcut icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.4">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.1655a90d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.77f3fd56.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
@@ -653,7 +653,11 @@
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MetricsEnabledHandler</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">Object</span><span class="p">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.metrics.Metrics</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MetricsEnabledHandler</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">Object</span><span class="p">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="p">{</span>
 
     <span class="n">MetricsLogger</span> <span class="n">metricsLogger</span> <span class="o">=</span> <span class="n">MetricsUtils</span><span class="p">.</span><span class="na">metricsLogger</span><span class="p">();</span>
 
@@ -682,7 +686,13 @@
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MetricsEnabledHandler</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">Object</span><span class="p">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.metrics.Metrics</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">software.amazon.cloudwatchlogs.emf.logger.MetricsLogger</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MetricsEnabledHandler</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">Object</span><span class="p">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="p">{</span>
 
     <span class="n">MetricsLogger</span> <span class="n">metricsLogger</span> <span class="o">=</span> <span class="n">MetricsUtils</span><span class="p">.</span><span class="na">metricsLogger</span><span class="p">();</span>
 
@@ -717,13 +727,25 @@ not met, <code>ValidationException</code> exception will be raised.</p>
 </ul>
 </div>
 <p>If you want to ensure that at least one metric is emitted, you can pass <code>raiseOnEmptyMetrics = true</code> to the <strong>@Metrics</strong> annotation:</p>
-<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">App.java</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="nd">@Metrics</span><span class="p">(</span><span class="n">raiseOnEmptyMetrics</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
-</span><span class="kd">public</span> <span class="n">Object</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="n">Object</span> <span class="n">input</span><span class="p">,</span> <span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-<span class="p">...</span>
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">MetricsRaiseOnEmpty.java</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.metrics.Metrics</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MetricsRaiseOnEmpty</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">Object</span><span class="p">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="p">{</span>
+
+    <span class="nd">@Override</span>
+<span class="hll">    <span class="nd">@Metrics</span><span class="p">(</span><span class="n">raiseOnEmptyMetrics</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
+</span>    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="n">Object</span> <span class="n">input</span><span class="p">,</span> <span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
@@ -731,13 +753,25 @@ not met, <code>ValidationException</code> exception will be raised.</p>
 </div>
 <h2 id="capturing-cold-start-metric">Capturing cold start metric<a class="headerlink" href="#capturing-cold-start-metric" title="Permanent link">&para;</a></h2>
 <p>You can capture cold start metrics automatically with <code>@Metrics</code> via the <code>captureColdStart</code> variable.</p>
-<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">App.java</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="nd">@Metrics</span><span class="p">(</span><span class="n">captureColdStart</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
-</span><span class="kd">public</span> <span class="n">Object</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="n">Object</span> <span class="n">input</span><span class="p">,</span> <span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-<span class="p">...</span>
+<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">MetricsColdStart.java</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.metrics.Metrics</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MetricsColdStart</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">Object</span><span class="p">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="p">{</span>
+
+    <span class="nd">@Override</span>
+<span class="hll">    <span class="nd">@Metrics</span><span class="p">(</span><span class="n">captureColdStart</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
+</span>    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="n">Object</span> <span class="n">input</span><span class="p">,</span> <span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
@@ -757,16 +791,30 @@ not met, <code>ValidationException</code> exception will be raised.</p>
 <p><strong>This will not be available during metrics visualization, use <code>dimensions</code> for this purpose.</strong></p>
 </div>
 <div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">App.java</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@Metrics</span><span class="p">(</span><span class="n">namespace</span> <span class="o">=</span> <span class="s">&quot;ServerlessAirline&quot;</span><span class="p">,</span> <span class="n">service</span> <span class="o">=</span> <span class="s">&quot;payment&quot;</span><span class="p">)</span>
-<span class="kd">public</span> <span class="n">APIGatewayProxyResponseEvent</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="n">Object</span> <span class="n">input</span><span class="p">,</span> <span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-<span class="hll">    <span class="n">metricsLogger</span><span class="p">().</span><span class="na">putMetric</span><span class="p">(</span><span class="s">&quot;CustomMetric1&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Unit</span><span class="p">.</span><span class="na">COUNT</span><span class="p">);</span>
-</span><span class="hll">    <span class="n">metricsLogger</span><span class="p">().</span><span class="na">putMetadata</span><span class="p">(</span><span class="s">&quot;booking_id&quot;</span><span class="p">,</span> <span class="s">&quot;1234567890&quot;</span><span class="p">);</span>
-</span>    <span class="p">...</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.metrics.Metrics</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">software.amazon.cloudwatchlogs.emf.logger.MetricsLogger</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">App</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">Object</span><span class="p">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="p">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="nd">@Metrics</span><span class="p">(</span><span class="n">namespace</span> <span class="o">=</span> <span class="s">&quot;ServerlessAirline&quot;</span><span class="p">,</span> <span class="n">service</span> <span class="o">=</span> <span class="s">&quot;payment&quot;</span><span class="p">)</span>
+<span class="hll">    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="n">Object</span> <span class="n">input</span><span class="p">,</span> <span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">        <span class="n">metricsLogger</span><span class="p">().</span><span class="na">putMetric</span><span class="p">(</span><span class="s">&quot;CustomMetric1&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Unit</span><span class="p">.</span><span class="na">COUNT</span><span class="p">);</span>
+</span>        <span class="n">metricsLogger</span><span class="p">().</span><span class="na">putMetadata</span><span class="p">(</span><span class="s">&quot;booking_id&quot;</span><span class="p">,</span> <span class="s">&quot;1234567890&quot;</span><span class="p">);</span>
+        <span class="p">...</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
@@ -781,11 +829,27 @@ not met, <code>ValidationException</code> exception will be raised.</p>
 <strong>unique metric = (metric_name + dimension_name + dimension_value)</strong></p>
 </div>
 <div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">App.java</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">withSingleMetric</span><span class="p">(</span><span class="s">&quot;CustomMetrics2&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Unit</span><span class="p">.</span><span class="na">COUNT</span><span class="p">,</span> <span class="s">&quot;Another&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">metric</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">{</span>
-    <span class="n">metric</span><span class="p">.</span><span class="na">setDimensions</span><span class="p">(</span><span class="n">DimensionSet</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;AnotherService&quot;</span><span class="p">,</span> <span class="s">&quot;CustomService&quot;</span><span class="p">));</span>
-<span class="p">});</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import static</span> <span class="nn">software.amazon.lambda.powertools.metrics.MetricsUtils.withSingleMetric</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">App</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">Object</span><span class="p">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="p">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="n">Object</span> <span class="n">input</span><span class="p">,</span> <span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+<span class="hll">         <span class="n">withSingleMetric</span><span class="p">(</span><span class="s">&quot;CustomMetrics2&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Unit</span><span class="p">.</span><span class="na">COUNT</span><span class="p">,</span> <span class="s">&quot;Another&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">metric</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">{</span>
+</span><span class="hll">            <span class="n">metric</span><span class="p">.</span><span class="na">setDimensions</span><span class="p">(</span><span class="n">DimensionSet</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;AnotherService&quot;</span><span class="p">,</span> <span class="s">&quot;CustomService&quot;</span><span class="p">));</span>
+</span><span class="hll">        <span class="p">});</span>
+</span>    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
 </div>
@@ -798,7 +862,7 @@ not met, <code>ValidationException</code> exception will be raised.</p>
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-03-01
+      Last update: 2021-03-04
     
   </small>
 </div>
@@ -876,7 +940,7 @@ not met, <code>ValidationException</code> exception will be raised.</p>
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      <script src="../../assets/javascripts/bundle.9b151c6a.min.js"></script>
       
         <script src="../../javascript/aws-amplify.min.js"></script>
       

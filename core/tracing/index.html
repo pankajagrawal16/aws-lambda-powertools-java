@@ -14,7 +14,7 @@
       
       
       <link rel="shortcut icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.4">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.1655a90d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.77f3fd56.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
@@ -505,7 +505,7 @@
                 
                 <p>Powertools tracing is an opinionated thin wrapper for <a href="https://github.com/aws/aws-xray-sdk-java/">AWS X-Ray Java SDK</a>
 a provides functionality to reduce the overhead of performing common tracing tasks.</p>
-<p><img alt="Tracer showcase" src="../../media/tracer_utility_showcase.png" /></p>
+<p><img alt="Tracing showcase" src="../../media/tracing_utility_showcase.png" /></p>
 <p><strong>Key Features</strong></p>
 <ul>
 <li>Capture cold start as annotation, and responses as well as full exceptions as metadata</li>
@@ -611,7 +611,7 @@ segment name that appears in traces.</p>
 the environment variables <code>POWERTOOLS_TRACER_CAPTURE_RESPONSE</code> and <code>POWERTOOLS_TRACER_CAPTURE_ERROR</code> as needed. Optionally, you can override behavior by
 different supported <code>captureMode</code> to record response, exception or both.</p>
 <div class="admonition warning">
-<p class="admonition-title">Returning sensitive information from your Lambda handler or functions, where Tracer is used?</p>
+<p class="admonition-title">Returning sensitive information from your Lambda handler or functions, where <code>Tracing</code> is used?</p>
 <p>You can disable annotation from capturing their responses and exception as tracing metadata with <strong><code>captureMode=DISABLED</code></strong>
 or globally by setting environment variables <strong><code>POWERTOOLS_TRACER_CAPTURE_RESPONSE</code></strong> and <strong><code>POWERTOOLS_TRACER_CAPTURE_ERROR</code></strong> to <strong><code>false</code></strong></p>
 </div>
@@ -665,13 +665,19 @@ create <a href="https://aws.amazon.com/about-aws/whats-new/2018/11/aws-xray-adds
 context for an operation using any native object.</p>
 <div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Annotations</label><div class="tabbed-content">
 <p>You can add annotations using <code>putAnnotation()</code> method from TracingUtils
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">App</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.tracing.Tracing</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.tracing.TracingUtils</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">App</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
 
     <span class="nd">@Tracing</span>
     <span class="kd">public</span> <span class="n">APIGatewayProxyResponseEvent</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="n">APIGatewayProxyRequestEvent</span> <span class="n">input</span><span class="p">,</span> <span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
@@ -683,13 +689,19 @@ context for an operation using any native object.</p>
 </div>
 <input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Metadata</label><div class="tabbed-content">
 <p>You can add metadata using <code>putMetadata()</code> method from TracingUtils
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">App</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.tracing.Tracing</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.tracing.TracingUtils</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">App</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
 
     <span class="nd">@Tracing</span>
     <span class="kd">public</span> <span class="n">APIGatewayProxyResponseEvent</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="n">APIGatewayProxyRequestEvent</span> <span class="n">input</span><span class="p">,</span> <span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
@@ -701,7 +713,7 @@ context for an operation using any native object.</p>
 </div>
 </div>
 <h2 id="utilities">Utilities<a class="headerlink" href="#utilities" title="Permanent link">&para;</a></h2>
-<p>Tracer modules comes with certain utility method when you don't want to use annotation for capturing a code block
+<p>Tracing modules comes with certain utility method when you don't want to use annotation for capturing a code block
 under a subsegment, or you are doing multithreaded programming. Refer examples below.</p>
 <div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Functional Api</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -715,7 +727,13 @@ under a subsegment, or you are doing multithreaded programming. Refer examples b
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">App</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.tracing.Tracing</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.tracing.TracingUtils</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">App</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
 
     <span class="kd">public</span> <span class="n">APIGatewayProxyResponseEvent</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="n">APIGatewayProxyRequestEvent</span> <span class="n">input</span><span class="p">,</span> <span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
 <span class="hll">         <span class="n">TracingUtils</span><span class="p">.</span><span class="na">withSubsegment</span><span class="p">(</span><span class="s">&quot;loggingResponse&quot;</span><span class="p">,</span> <span class="n">subsegment</span> <span class="o">-&gt;</span> <span class="p">{</span>
@@ -741,7 +759,11 @@ under a subsegment, or you are doing multithreaded programming. Refer examples b
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">App</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import static</span> <span class="nn">software.amazon.lambda.powertools.tracing.TracingUtils.withEntitySubsegment</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">App</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
 
     <span class="kd">public</span> <span class="n">APIGatewayProxyResponseEvent</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="n">APIGatewayProxyRequestEvent</span> <span class="n">input</span><span class="p">,</span> <span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Extract existing trace data</span>
@@ -767,7 +789,7 @@ under a subsegment, or you are doing multithreaded programming. Refer examples b
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-03-01
+      Last update: 2021-03-04
     
   </small>
 </div>
@@ -845,7 +867,7 @@ under a subsegment, or you are doing multithreaded programming. Refer examples b
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      <script src="../../assets/javascripts/bundle.9b151c6a.min.js"></script>
       
         <script src="../../javascript/aws-amplify.min.js"></script>
       

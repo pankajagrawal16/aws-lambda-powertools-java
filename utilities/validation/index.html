@@ -14,7 +14,7 @@
       
       
       <link rel="shortcut icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.4">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.1655a90d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.77f3fd56.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
@@ -747,15 +747,19 @@ section.</p>
 <p>It will fail fast with <code>ValidationException</code> if an event or response doesn't conform with given JSON Schema.</p>
 <p>While it is easier to specify a json schema file in the classpath (using the notation <code>"classpath:/path/to/schema.json"</code>), you can also provide a JSON String containing the schema.</p>
 <div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">MyFunctionHandler.java</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyFunctionHandler</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.validation.Validation</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyFunctionHandler</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">APIGatewayProxyRequestEvent</span><span class="p">,</span> <span class="n">APIGatewayProxyResponseEvent</span><span class="o">&gt;</span> <span class="p">{</span>
 
     <span class="nd">@Override</span>
 <span class="hll">    <span class="nd">@Validation</span><span class="p">(</span><span class="n">inboundSchema</span> <span class="o">=</span> <span class="s">&quot;classpath:/schema_in.json&quot;</span><span class="p">,</span> <span class="n">outboundSchema</span> <span class="o">=</span> <span class="s">&quot;classpath:/schema_out.json&quot;</span><span class="p">)</span>
@@ -932,15 +936,19 @@ section.</p>
 <p>Sometimes, you might want to validate only a portion of it - This is where the envelope parameter is for.</p>
 <p>Envelopes are <a href="https://jmespath.org/tutorial.html">JMESPath expressions</a> to extract a portion of JSON you want before applying JSON Schema validation.</p>
 <div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">MyCustomEventHandler.java</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyCustomEventHandler</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">MyCustomEvent</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="p">{</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.validation.Validation</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyCustomEventHandler</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">MyCustomEvent</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="p">{</span>
 
     <span class="nd">@Override</span>
 <span class="hll">    <span class="nd">@Validation</span><span class="p">(</span><span class="n">inboundSchema</span> <span class="o">=</span> <span class="s">&quot;classpath:/my_custom_event_schema.json&quot;</span><span class="p">,</span>
@@ -999,14 +1007,18 @@ and <a href="https://jmespath.org/tutorial.html#functions">function</a> expressi
 <p>Use <code>powertools_base64</code> function to decode any base64 data.</p>
 <p>Below sample will decode the base64 value within the data key, and decode the JSON string into a valid JSON before we can validate it.</p>
 <div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">MyEventHandler.java</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyEventHandler</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">MyEvent</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="p">{</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.validation.ValidationUtils</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyEventHandler</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">MyEvent</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="p">{</span>
 
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="n">String</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="n">MyEvent</span> <span class="n">myEvent</span><span class="p">,</span> <span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
@@ -1031,14 +1043,18 @@ and <a href="https://jmespath.org/tutorial.html#functions">function</a> expressi
 <p>Use <code>powertools_base64_gzip</code> function to decompress and decode base64 data.</p>
 <p>Below sample will decompress and decode base64 data.</p>
 <div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">MyEventHandler.java</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyEventHandler</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">MyEvent</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="p">{</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.validation.ValidationUtils</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyEventHandler</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">MyEvent</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="p">{</span>
 
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="n">String</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="n">MyEvent</span> <span class="n">myEvent</span><span class="p">,</span> <span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
@@ -1118,9 +1134,19 @@ to powertools.You can then use it to do your validation or using annotation.</p>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">...</span>
-<span class="hll"><span class="n">ValidationConfig</span><span class="p">.</span><span class="na">get</span><span class="p">().</span><span class="na">addFunction</span><span class="p">(</span><span class="k">new</span> <span class="n">XMLFunction</span><span class="p">());</span>
-</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">...</span>
+<span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.validation.ValidationConfig</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.validation.ValidationUtils.validate</span><span class="p">;</span>
+
+<span class="kd">static</span> <span class="p">{</span>
+<span class="hll">    <span class="n">ValidationConfig</span><span class="p">.</span><span class="na">get</span><span class="p">().</span><span class="na">addFunction</span><span class="p">(</span><span class="k">new</span> <span class="n">XMLFunction</span><span class="p">());</span>
+</span><span class="p">}</span>
+
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyXMLEventHandler</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">MyEventWithXML</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="p">{</span>
 
     <span class="nd">@Override</span>
@@ -1143,9 +1169,19 @@ to powertools.You can then use it to do your validation or using annotation.</p>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">...</span>
-<span class="hll"><span class="n">ValidationConfig</span><span class="p">.</span><span class="na">get</span><span class="p">().</span><span class="na">addFunction</span><span class="p">(</span><span class="k">new</span> <span class="n">XMLFunction</span><span class="p">());</span>
-</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">...</span>
+<span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.validation.ValidationConfig</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.validation.Validation</span><span class="p">;</span>
+
+<span class="kd">static</span> <span class="p">{</span>
+<span class="hll">    <span class="n">ValidationConfig</span><span class="p">.</span><span class="na">get</span><span class="p">().</span><span class="na">addFunction</span><span class="p">(</span><span class="k">new</span> <span class="n">XMLFunction</span><span class="p">());</span>
+</span><span class="p">}</span>
+
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyXMLEventHandler</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">MyEventWithXML</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="p">{</span>
 
     <span class="nd">@Override</span>
@@ -1172,9 +1208,19 @@ You can use the <code>ValidationConfig</code> to change that behaviour.</p>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">...</span>
-<span class="hll"><span class="n">ValidationConfig</span><span class="p">.</span><span class="na">get</span><span class="p">().</span><span class="na">setSchemaVersion</span><span class="p">(</span><span class="n">SpecVersion</span><span class="p">.</span><span class="na">VersionFlag</span><span class="p">.</span><span class="na">V4</span><span class="p">);</span>
-</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">...</span>
+<span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.validation.ValidationConfig</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.validation.Validation</span><span class="p">;</span>
+
+<span class="kd">static</span> <span class="p">{</span>
+<span class="hll">    <span class="n">ValidationConfig</span><span class="p">.</span><span class="na">get</span><span class="p">().</span><span class="na">setSchemaVersion</span><span class="p">(</span><span class="n">SpecVersion</span><span class="p">.</span><span class="na">VersionFlag</span><span class="p">.</span><span class="na">V4</span><span class="p">);</span>
+</span><span class="p">}</span>
+
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyXMLEventHandler</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">MyEventWithXML</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="p">{</span>
 
     <span class="nd">@Override</span>
@@ -1201,10 +1247,20 @@ You can use the <code>ValidationConfig</code> to change that behaviour.</p>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">...</span>
-<span class="hll"><span class="n">ObjectMapper</span> <span class="n">objectMapper</span><span class="o">=</span> <span class="n">ValidationConfig</span><span class="p">.</span><span class="na">get</span><span class="p">().</span><span class="na">getObjectMapper</span><span class="p">();</span>
-</span><span class="hll"><span class="c1">// update (de)serializationConfig or other properties</span>
-</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">...</span>
+<span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.validation.ValidationConfig</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">software.amazon.lambda.powertools.validation.Validation</span><span class="p">;</span>
+
+<span class="kd">static</span> <span class="p">{</span>
+<span class="hll">    <span class="n">ObjectMapper</span> <span class="n">objectMapper</span><span class="o">=</span> <span class="n">ValidationConfig</span><span class="p">.</span><span class="na">get</span><span class="p">().</span><span class="na">getObjectMapper</span><span class="p">();</span>
+</span><span class="hll">    <span class="c1">// update (de)serializationConfig or other properties</span>
+</span><span class="p">}</span>
+
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyXMLEventHandler</span> <span class="kd">implements</span> <span class="n">RequestHandler</span><span class="o">&lt;</span><span class="n">MyEventWithXML</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="p">{</span>
 
     <span class="nd">@Override</span>
@@ -1225,7 +1281,7 @@ You can use the <code>ValidationConfig</code> to change that behaviour.</p>
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-03-01
+      Last update: 2021-03-04
     
   </small>
 </div>
@@ -1289,7 +1345,7 @@ You can use the <code>ValidationConfig</code> to change that behaviour.</p>
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      <script src="../../assets/javascripts/bundle.9b151c6a.min.js"></script>
       
         <script src="../../javascript/aws-amplify.min.js"></script>
       
